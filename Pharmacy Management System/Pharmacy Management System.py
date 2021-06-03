@@ -45,8 +45,7 @@ class Parent:
         master.iconphoto(False,p1)
 
 
-      
-#       self.master.configure(background="powderblue")
+
         self.mainframe=Frame(self.master)
         self.mainframe.pack()
     
@@ -54,9 +53,9 @@ class Parent:
 class Login(Parent):
     def __init__(self,master):
         super().__init__(master)
-#        engine = pyttsx3.init()
- #       engine.say('Good morning Welcome to Team Exodus Pharmacy Management System')
-  #      engine.runAndWait()
+        engine = pyttsx3.init()
+        engine.say('Good morning Welcome to Hassan Shakoor Pharmacy Management System')
+       engine.runAndWait()
 
         
         self.Username=StringVar()
@@ -296,14 +295,6 @@ class Sales(Parent):
 
 
 
-        #tk.Button(element, text='No Fill').pack(anchor='w')
-
-# To show the fill
-     #   tk.Label(root, text='Fill X', bg='green').pack(fill='x')
-
-
-
-
 
         self.dataframe=Frame(self.mainframe,bd=20,width=1300, height=550,padx=20,relief=RIDGE)
         self.dataframe.pack()
@@ -315,13 +306,6 @@ class Sales(Parent):
 
         # RIGHT FRAME
 
-##        self.dataframeRight=Listbox(self.dataframe,bd=10,width=200, height=200,padx=20,relief=RIDGE,font=("arial",12,"bold"))
-##    
-##        self.dataframeRight.pack(side=RIGHT)
-
-
-
-
         self.dataframeright=LabelFrame(self.dataframe,bd=10,width=450, height=300,padx=20,relief=RIDGE,font=("arial",12,"bold"),text="Categories:  ")
         self.dataframeright.pack(side=RIGHT)
 
@@ -331,15 +315,6 @@ class Sales(Parent):
 
         self.dataframeRight.bind("<<ListboxSelect>>",self.Select)
         self.dataframeRight.grid(row=0,column=0,padx=8)
-##        
-
-
-
-##        df = pd.read_csv("Medicines.csv")
-##        self.dataframeRight.insert(END, df)
-
-
-
 
         #INSIDE LEFT BOX
         # MEDICINE ENTRY
@@ -410,13 +385,8 @@ class Sales(Parent):
 
         # BILL BUTTON
         self.bill=Button(self.mainframe,text="Bill",font=("arial",12,"bold"),height=3,width=25,bd=4,bg="pink",command=self.generate_bill).place(x=70,y=620)
-        #self.reset_entries()
+       
         '''NEW'''
-##        medicine="Panadol"
-##        data=cur.execute("SELECT Company FROM Medicines WHERE Name=?", (medicine,))
-##        row=data.fetchone()
-##        conn.commit()
-##        print(row)
 
         cur.execute('SELECT * FROM Medicines')
         self.row=cur.fetchall()
@@ -520,7 +490,7 @@ class Sales(Parent):
 
         self.dataframeRight.delete(0,END)
         
-        string3=str(date)+"                     "+str(time)+str("                      Cashier Name:  Ahtir bondu")
+        string3=str(date)+"                     "+str(time)+str("                      Cashier Name:  Ahtir")
 
         self.dataframeRight.insert(END,string3)
         
@@ -554,11 +524,6 @@ class Sales(Parent):
                 self.list.append(a)
             string="Serial no         "+str("Medicine            ")+str("Salt                 ")+str("Quantity                ")+str("Weight")
             self.dataframeRight.insert(END,string)
-##            self.dataframeRight.insert(END,"Serial No")
-##            self.dataframeRight.insert(END,"        Medicine")
-##            self.dataframeRight.insert(END,"          Salt")
-##            self.dataframeRight.insert(END,"                   Quantity")
-##            self.dataframeRight.insert(END,"            Weight")
             self.dataframeRight.insert(END,'\n\n')
             
             n=1
@@ -569,12 +534,7 @@ class Sales(Parent):
                         string1=str(n)+"                     "+str(x[1])+"               "+str(x[2])+"           "+str(x[4])+"                 "+str(x[5])
                         self.dataframeRight.insert(END,string)
                         self.dataframeRight.insert(END,str(string1))
-##                        self.dataframeRight.insert(END," "+str(n))
-##                        self.dataframeRight.insert(END,'                        '+str(x[1]))
-##                        self.dataframeRight.insert(END,'         '+str(x[2]))
-##                        self.dataframeRight.insert(END,'                '+str(x[4]))
-##                        self.dataframeRight.insert(END,'                    '+str(x[5]))
-##                        self.dataframeRight.insert(END,'\n')
+
                         n=n+1
                 
                     else:
@@ -584,20 +544,6 @@ class Sales(Parent):
            
             ''''ADJUST IN BILL WALE ME LATER'''
 
-##        name=""
-##        self.name=name
-##        self.totalprice=0
-##    def addbill(self,medicinesdatabase,quantity):
-##        x=medicinesdatabase.dict[food]
-##        self.totalprice=self.totalprice+quantity*x
-##    def total(self,discount):
-##        #This is to write on python console
-##        #To write on tkinter we need to do gui programming
-##        print("Total=",self.totalprice)
-##        print("discount=",discount)
-##        print("--------------")
-##        print("AmountDue=",self.totalprice-discount)
-##        
 
 class Generate_Bill(Parent):
     def __init__(self,master):
